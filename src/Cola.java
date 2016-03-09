@@ -1,10 +1,7 @@
 
 public class Cola {
-    class Nodo{
-        String info;
-        Nodo sig;
-    }
-    private Nodo cabeza, fondo;
+
+    public Nodo cabeza, fondo;
     private int longitud;
 
     Cola(){
@@ -15,10 +12,10 @@ public class Cola {
     boolean vacia(){ // Verifica si esta vacia o no
         return (cabeza == null);
     }
-    void insertar(String info){ // Inserta nodos o "clientes"
+    void insertar(int minutos){ // Inserta nodos o "clientes"
         longitud += 1;
         Nodo nuevo = new Nodo();
-        nuevo.info = info;
+        nuevo.minutos = minutos;
         nuevo.sig = null;
         if(vacia()){
             cabeza = nuevo;
@@ -31,14 +28,14 @@ public class Cola {
     String extraer(){ // Extrae el primer elemento de la cola
         if(!vacia()){
             longitud -= 1;
-            String informacion = cabeza.info;
+            int informacion = cabeza.minutos;
             if(cabeza == fondo){
                 cabeza = null;
                 fondo = null;
             }else{
                 cabeza = cabeza.sig;
             }
-            return informacion;
+            return informacion+"";
         }else{
             return "vacia";
         }
@@ -47,7 +44,7 @@ public class Cola {
         Nodo reco = cabeza;
         System.out.println("Listado de todos los elementos de la cola");
         while(reco != null){
-            System.out.print(reco.info+"-");
+            System.out.print(reco.minutos+"-");
             reco = reco.sig;
         }
         System.out.println();
